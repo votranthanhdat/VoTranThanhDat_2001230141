@@ -1,0 +1,35 @@
+﻿@model LTWEB_8.Models.SACH
+
+@{
+    ViewBag.Title = "Xóa Sách";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xóa Sách</h2>
+
+<h3>Bạn có chắc chắn muốn xóa cuốn sách này?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Tên sách</dt>
+        <dd>@Html.DisplayFor(model => model.TenSach)</dd>
+
+        <dt>Ảnh bìa</dt>
+        <dd>
+            <img src="@Url.Content("~/Hinhsanpham/" + Model.AnhBia)" width="120" />
+        </dd>
+
+        <dt>Đơn giá</dt>
+        <dd>@String.Format("{0:0,0}", Model.DonGia) VNĐ</dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            @Html.ActionLink("Quay về danh sách", "DMSach")
+        </div>
+    }
+</div>

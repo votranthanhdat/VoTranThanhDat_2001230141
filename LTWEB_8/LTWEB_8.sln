@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35514.174
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LTWEB_8", "LTWEB_8.csproj", "{5F984F93-F8A8-45CC-994B-4E81B618C49A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LTWEB_NhanVien", "..\LTWEB_NhanVien\LTWEB_NhanVien.csproj", "{94E29940-D429-4872-B4A0-F242914A3525}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5F984F93-F8A8-45CC-994B-4E81B618C49A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F984F93-F8A8-45CC-994B-4E81B618C49A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F984F93-F8A8-45CC-994B-4E81B618C49A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F984F93-F8A8-45CC-994B-4E81B618C49A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94E29940-D429-4872-B4A0-F242914A3525}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94E29940-D429-4872-B4A0-F242914A3525}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94E29940-D429-4872-B4A0-F242914A3525}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94E29940-D429-4872-B4A0-F242914A3525}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0B456DCC-0E91-417B-B614-DEEB2DAD1B2F}
+	EndGlobalSection
+EndGlobal

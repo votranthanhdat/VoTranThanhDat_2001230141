@@ -1,0 +1,38 @@
+﻿@model LTWEB_NhanVien.Models.tbl_Employee
+
+@{
+    ViewBag.Title = "Xác nhận Xóa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xác nhận Xóa</h2>
+
+<h3>Bạn có chắc chắn muốn xóa nhân viên này?</h3>
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            Phòng ban
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Deparment.Name)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

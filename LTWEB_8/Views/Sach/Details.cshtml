@@ -1,0 +1,42 @@
+﻿@model LTWEB_8.Models.SACH
+
+@{
+    ViewBag.Title = "Chi tiết Sách";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết Sách</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Tên sách</dt>
+        <dd>@Html.DisplayFor(model => model.TenSach)</dd>
+
+        <dt>Ảnh bìa</dt>
+        <dd>
+            <img src="@Url.Content("~/Hinhsanpham/" + Model.AnhBia)" width="200" />
+        </dd>
+
+        <dt>Đơn giá</dt>
+        <dd>@String.Format("{0:0,0}", Model.DonGia) VNĐ</dd>
+        <dt>Mô tả</dt>
+        <dd>@Html.DisplayFor(model => model.Mota)</dd>
+        <dt>Số trang</dt>
+        <dd>@Html.DisplayFor(model => model.SoTrang)</dd>
+
+        <dt>Chủ đề</dt>
+        <dd>@Html.DisplayFor(model => model.CHUDE.TenChuDe)</dd>
+
+        <dt>Tác giả</dt>
+        <dd>@Html.DisplayFor(model => model.TACGIA.TenTG)</dd>
+
+        <dt>Nhà xuất bản</dt>
+        <dd>@Html.DisplayFor(model => model.NHAXUATBAN.TenNXB)</dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaSach }, new { @class = "btn btn-warning" }) |
+    @Html.ActionLink("Quay về danh sách", "DMSach")
+</p>

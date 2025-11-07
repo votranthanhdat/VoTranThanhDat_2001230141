@@ -1,0 +1,54 @@
+﻿@model LTWEB_NhanVien.Models.tbl_Employee
+
+@{
+    ViewBag.Title = "Thông tin chi tiết Nhân viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div style="border: 1px solid #ccc; padding: 20px; max-width: 400px; border-radius: 8px;">
+    <dl class="dl-horizontal">
+        <dt>
+            Ảnh:
+        </dt>
+        <dd>
+            <img src="@Url.Content("~/Images/" + Model.Image)" style="width: 150px; height: 150px; object-fit: cover; border-radius: 4px;" />
+        </dd>
+        <br />
+        <dt>
+            Họ Tên:
+        </dt>
+        <dd>
+            <b>@Html.DisplayFor(model => model.Name)</b>
+        </dd>
+
+        <dt>
+            Giới Tính:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            Thành Phố:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            Phòng ban:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Deparment.Name)
+            (Mã: @Html.DisplayFor(model => model.DeptId))
+        </dd>
+
+    </dl>
+</div>
+<br />
+<p>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
+</p>

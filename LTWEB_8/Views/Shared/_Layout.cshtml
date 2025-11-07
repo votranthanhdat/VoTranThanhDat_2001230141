@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Trang Quản Trị</title>
+
+    @Styles.Render("~/Content/css")
+
+    <style>
+        
+
+        body {
+            padding-top: 50px;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 51px; 
+            left: 0;
+            bottom: 0;
+            width: 240px; 
+            z-index: 1000;
+            display: block;
+            padding: 20px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            background-color: #f8f9fa; 
+            border-right: 1px solid #dee2e6;
+        }
+
+        .main-content {
+            
+            margin-left: 240px; 
+            padding: 20px;
+        }
+
+       
+        .nav-sidebar > .active > a,
+        .nav-sidebar > .active > a:hover,
+        .nav-sidebar > .active > a:focus {
+            color: #fff;
+            background-color: #007bff; 
+        }
+
+        .nav-sidebar > li > a {
+            padding: 10px 15px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Trang Quản Trị BookStore</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Xin chào, Admin!</a></li>
+                <li><a href="/">Về trang chủ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div>
+        <div class="sidebar">
+            <ul class="nav nav-sidebar nav-pills nav-stacked">
+                <li class="@(ViewBag.Title == "Quản lý Sách" ? "active" : "")">
+                    @Html.ActionLink("Quản lý Sách", "DMSach", "Sach")
+                </li>
+                <li class="@(ViewBag.Title == "Quản lý Chủ đề" ? "active" : "")">
+                    @Html.ActionLink("Quản lý Chủ đề", "Index", "ChuDe")
+                </li>
+                <li class="@(ViewBag.Title == "Quản lý NXB" ? "active" : "")">
+                    @Html.ActionLink("Quản lý NXB", "Index", "NhaXuatBan")
+                </li>
+                <li class="@(ViewBag.Title == "Quản lý Tác giả" ? "active" : "")">
+                    @Html.ActionLink("Quản lý Tác giả", "Index", "TacGia")
+                </li>
+                <li class="@(ViewBag.Title == "Quản lý Đơn hàng" ? "active" : "")">
+                    @Html.ActionLink("Quản lý Đơn hàng", "Index", "DonHang")
+                </li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Trang quản trị BookStore</p>
+            </footer>
+        </div>
+
+    </div> @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

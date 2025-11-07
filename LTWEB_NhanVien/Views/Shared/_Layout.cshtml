@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Trang Quản Trị</title>
+
+    @Styles.Render("~/Content/css")
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    <style>
+        
+        body {
+            padding-top: 50px;
+            background-color: #f1f2f7;
+        }
+
+        .navbar-inverse {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e7e7e7;
+        }
+
+            .navbar-inverse .navbar-brand {
+                color: #333;
+                font-weight: bold;
+            }
+
+            .navbar-inverse .navbar-nav > li > a {
+                color: #333;
+            }
+
+     
+        .sidebar {
+            position: fixed;
+            top: 51px;
+            left: 0;
+            bottom: 0;
+            width: 240px;
+            padding: 20px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            background-color: #343a40; 
+            border-right: 1px solid #dee2e6;
+        }
+
+       
+        .nav-sidebar > li > a {
+            padding: 10px 15px;
+            color: #c8ced3; 
+            border-radius: 4px;
+        }
+
+            .nav-sidebar > li > a > .fa {
+                margin-right: 10px;
+                width: 20px;
+            }
+
+          
+            .nav-sidebar > .active > a,
+            .nav-sidebar > li > a:hover {
+                color: #fff;
+                background-color: #007bff; 
+                text-decoration: none;
+            }
+
+       
+        .main-content {
+            margin-left: 240px;
+            padding: 20px;
+        }
+
+        .page-content {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+
+        .main-content footer {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Quản lý Nhân sự</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><i class="fa fa-user"></i> Xin chào, Admin!</a></li>
+                <li><a href="/"><i class="fa fa-sign-out-alt"></i> Về trang chủ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div>
+        <div class="sidebar">
+            <ul class="nav nav-sidebar nav-pills nav-stacked">
+
+                <li class="@(ViewBag.Title == "Quản lý Nhân viên" ? "active" : "")">
+                    <a href="@Url.Action("Index", "NhanVien")">
+                        <i class="fa fa-users"></i> Quản lý Nhân viên
+                    </a>
+                </li>
+
+                <li class="@(ViewBag.Title == "Quản lý Phòng ban" ? "active" : "")">
+                    <a href="@Url.Action("Index", "PhongBan")">
+                        <i class="fa fa-building"></i> Quản lý Phòng ban
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="page-content">
+                @RenderBody()
+            </div>
+
+            <footer class="text-center">
+                <p>&copy; @DateTime.Now.Year - Hệ thống Quản lý Nhân sự</p>
+            </footer>
+        </div>
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
