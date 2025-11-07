@@ -1,0 +1,229 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <title>Fahasa - Mua Sách Online (Dark Theme)</title>
+    <link rel="stylesheet" href="~/Content/style.css" />
+    <style>
+        /* ==== RESET ==== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #1e1e1e;
+            color: #ddd;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ==== HEADER ==== */
+        header {
+            background: #121212;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 40px;
+            border-bottom: 2px solid #ff6600;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+            header .logo {
+                height: 55px;
+                border-radius: 5px;
+            }
+
+            header nav a {
+                color: #f0f0f0;
+                text-decoration: none;
+                margin: 0 12px;
+                font-weight: bold;
+                transition: 0.3s;
+            }
+
+                header nav a:hover {
+                    color: #ff6600;
+                }
+
+        /* ==== SEARCH BAR ==== */
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+            .search-bar input {
+                padding: 6px 10px;
+                border-radius: 5px 0 0 5px;
+                border: 1px solid #444;
+                background: #2b2b2b;
+                color: #eee;
+                width: 260px;
+            }
+
+            .search-bar button {
+                border: none;
+                background: #ff6600;
+                color: white;
+                padding: 7px 12px;
+                border-radius: 0 5px 5px 0;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+                .search-bar button:hover {
+                    background: #e65c00;
+                }
+
+        /* ==== MAIN LAYOUT ==== */
+        main {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px 40px;
+        }
+
+        /* ==== SIDEBAR ==== */
+        aside {
+            width: 240px;
+            background: #2a2a2a;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.6);
+            height: fit-content;
+        }
+
+            aside h3 {
+                color: #ff6600;
+                border-bottom: 2px solid #ff6600;
+                padding-bottom: 5px;
+                margin-bottom: 10px;
+            }
+
+            aside ul {
+                list-style: none;
+                margin-bottom: 20px;
+            }
+
+            aside li a {
+                display: block;
+                color: #ddd;
+                text-decoration: none;
+                padding: 6px 0;
+                transition: 0.3s;
+            }
+
+                aside li a:hover {
+                    color: #ff6600;
+                    transform: translateX(5px);
+                }
+
+        /* ==== CONTENT ==== */
+        .content {
+            flex: 1;
+            background: #2a2a2a;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.6);
+            padding: 20px;
+        }
+
+        .banner {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #444;
+        }
+
+        .main-body {
+            color: #eee;
+        }
+
+        /* ==== FOOTER ==== */
+        footer {
+            background: #121212;
+            color: #aaa;
+            text-align: center;
+            padding: 15px;
+            border-top: 2px solid #ff6600;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <img src="~/Content/HinhAnh/logo.jpg" alt="Logo" class="logo" />
+
+        <div class="search-bar">
+            <form action="/Home/Search" method="get">
+                <input type="text" placeholder="Tìm kiếm sách..." name="search" />
+                <button type="submit">🔍</button>
+            </form>
+        </div>
+
+        <nav>
+            <a href="/">Trang chủ</a>
+            <a href="/Home/Search">Tìm kiếm</a>
+            <a href="/Home/DangKy">Đăng ký</a>
+            <a href="/Home/DangNhap">Đăng nhập</a>
+            <a href="/Home/LienHe">Liên hệ</a>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+        <!-- SIDEBAR -->
+        <aside>
+            <h3>📚 Chủ đề sách</h3>
+            <ul>
+                @{
+                    var listChuDe = ViewBag.ListChuDe as List<LTWEB_BAI9.Models.CHUDE>;
+                    if (listChuDe != null)
+                    {
+                        foreach (var cd in listChuDe)
+                        {
+                            <li>@Html.ActionLink(cd.TenChuDe, "SachTheoChuDe", "Home", new { MaCD = cd.MaChuDe }, null)</li>
+                        }
+                    }
+                }
+            </ul>
+
+            <h3>🏢 Nhà xuất bản</h3>
+            <ul>
+                @{
+                    var listNXB = ViewBag.ListNXB as List<LTWEB_BAI9.Models.NHAXUATBAN>;
+                    if (listNXB != null)
+                    {
+                        foreach (var nxb in listNXB)
+                        {
+                            <li>@Html.ActionLink(nxb.TenNXB, "SachTheoNXB", "Home", new { MaNXB = nxb.MaNXB }, null)</li>
+                        }
+                    }
+                }
+            </ul>
+        </aside>
+
+        <!-- CONTENT -->
+        <section class="content">
+            <img class="banner" src="https://cdn.pixabay.com/photo/2015/09/05/21/51/book-925589_960_720.jpg" alt="Banner" />
+            <div class="main-body">
+                @RenderBody()
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2025 Fahasa.com | Khoa CNTT - HUFI</p>
+        <p>Địa chỉ: 140 Lê Trọng Tấn, Tân Phú, TP.HCM | Điện thoại: (028) 38161673</p>
+    </footer>
+</body>
+</html>
